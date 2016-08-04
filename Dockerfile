@@ -25,6 +25,10 @@ RUN curl -o /usr/local/src/nginx.tar.gz -SL https://nginx.org/download/nginx-1.1
 	&& make -j2 \
 	&& make install
 
+RUN mkdir /opt/nginx/conf/conf.d
+COPY nginx.conf /opt/nginx/conf/nginx.conf
+COPY virtual.conf /opt/nginx/conf/conf.d/virtual.conf
+
 EXPOSE 80
 
 CMD ["/opt/nginx/sbin/nginx", "-g", "daemon off;"]
