@@ -34,11 +34,7 @@ RUN curl -o /usr/local/src/nginx.tar.gz -SL https://nginx.org/download/nginx-${N
 
 COPY nginx.conf /opt/nginx/conf/
 COPY virtual.conf /opt/nginx/conf/conf.d/
-COPY nginx.logrotate /etc/logrotate.d/
-COPY entrypoint.sh /
 
 EXPOSE 80
 
 CMD ["/opt/nginx/sbin/nginx", "-g", "daemon off;"]
-
-ENTRYPOINT ["/entrypoint.sh"]
