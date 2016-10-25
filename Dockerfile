@@ -28,13 +28,13 @@ ENV LUAJIT_INC /usr/local/luajit/include/luajit-2.0
 RUN curl -o /usr/local/src/nginx.tar.gz -SL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
 	&& tar zxf /usr/local/src/nginx.tar.gz -C /usr/local/src \
 	&& cd /usr/local/src/nginx-${NGINX_VERSION} \
-	&& ./configure --prefix=/opt/nginx --with-ld-opt="-Wl,-rpath,/usr/local/luajit/lib" --add-module=../ngx_devel_kit-${NDK_VERSION} --add-module=../lua-nginx-module-${LUAMOD_VERSION} \
+	&& ./configure --prefix=/usr/local/nginx --with-ld-opt="-Wl,-rpath,/usr/local/luajit/lib" --add-module=../ngx_devel_kit-${NDK_VERSION} --add-module=../lua-nginx-module-${LUAMOD_VERSION} \
 	&& make \
 	&& make install
 
-COPY nginx.conf /opt/nginx/conf/
-COPY virtual.conf /opt/nginx/conf/conf.d/
+COPY nginx.conf /usr/local/nginx/conf/
+COPY virtual.conf /usr/local/nginx/conf/conf.d/
 
 EXPOSE 80
 
-CMD ["/opt/nginx/sbin/nginx", "-g", "daemon off;"]
+CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
