@@ -5,7 +5,7 @@ RUN cp -p /usr/share/zoneinfo/Japan /etc/localtime && echo 'ZONE="Asia/Tokyo"' >
 RUN yum -y update
 RUN yum -y install gcc pcre-devel zlib-devel
 
-ENV NGINX_VERSION 1.14.0
+ENV NGINX_VERSION 1.15.5
 ENV LUAJIT_VERSION 2.0.5
 ENV NDK_VERSION 0.3.0
 ENV LUAMOD_VERSION 0.10.13
